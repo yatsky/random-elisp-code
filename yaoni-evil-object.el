@@ -16,3 +16,6 @@
     (evil-range beg end)))
 
 (define-key evil-inner-text-objects-map "y" 'yaoni/line-w/o-newline)
+
+(provide 'yaoni-evil-object)
+;;; yaoni-evil-object.el ends here

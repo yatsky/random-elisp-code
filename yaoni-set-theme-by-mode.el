@@ -2,7 +2,7 @@
 (setq special-display-regexps '("\\*vterm\\**"))
 
 ;; adapted from http://xahlee.info/emacs/emacs/emacs_set_theme_on_mode.html
-(defun set-vterm-theme ()
+(defun yaoni/set-vterm-theme ()
   "Set background color or theme depending on major mode."
   (if (and
        ;; interestingly eq is enough to test equality here
@@ -17,3 +17,5 @@
 
 (add-hook 'vterm-mode-hook 'set-vterm-theme)
 
+(provide 'yaoni-set-theme-by-mode)
+;;; yaoni-set-theme-by-mode.el ends here
