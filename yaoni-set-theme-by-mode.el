@@ -15,7 +15,7 @@
         (set-background-color "#282a36")
         (set-foreground-color "#f8f8f2"))))
 
-(add-hook 'vterm-mode-hook 'set-vterm-theme)
+(add-hook 'vterm-mode-hook 'yaoni/set-vterm-theme)
 
 (provide 'yaoni-set-theme-by-mode)
 ;;; yaoni-set-theme-by-mode.el ends here
