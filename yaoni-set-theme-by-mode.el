@@ -13,7 +13,8 @@
       (progn 
         (message "setting basic theme for vterm.")
         (set-background-color "#282a36")
-        (set-foreground-color "#f8f8f2"))))
+        (set-foreground-color "#f8f8f2")
+        (set-cursor-color "white"))))
 
 (add-hook 'vterm-mode-hook 'yaoni/set-vterm-theme)
 
