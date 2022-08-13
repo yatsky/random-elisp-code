@@ -13,3 +13,5 @@
 ;; Instead we use `gnus-article-prepare-hook'.
 (add-hook 'gnus-article-prepare-hook 'cleanup-article)
 
+
+(provide 'gnus)
