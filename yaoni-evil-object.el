@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defun yaoni/get-text-object (&optional entire-line)
   "Return an my own text object based on `ENTIRE-LINE'."
   (let* ((beg (if entire-line

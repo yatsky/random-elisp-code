@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; use regex because sometimes we need more than one vterm frame/window!
 (setq special-display-regexps '("\\*vterm\\**"))
 

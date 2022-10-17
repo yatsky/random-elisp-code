@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defun cleanup-article ()
   "Wrapper around `article-strip-trailing-space'."
   (message "Running cleanup.")

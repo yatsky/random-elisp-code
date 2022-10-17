@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defun yaoni/get-html-text (buffer-name)
   (interactive)
   (let* ((text (progn
