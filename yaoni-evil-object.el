@@ -25,8 +25,8 @@
   "Select characters from point to end of line without \n or \n\r."
   (yaoni/get-text-object))
 
-(define-key evil-inner-text-objects-map "y" 'yaoni/point-to-end-w/o-newline)
-(define-key evil-outer-text-objects-map "y" 'yaoni/line-w/o-newline)
+(define-key evil-inner-text-objects-map "l" 'yaoni/point-to-end-w/o-newline)
+(define-key evil-outer-text-objects-map "l" 'yaoni/line-w/o-newline)
 
 (provide 'yaoni-evil-object)
 ;;; yaoni-evil-object.el ends here
