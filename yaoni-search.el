@@ -39,7 +39,7 @@
 
 (defun yaoni/search-current-folder-file ()
   (interactive)
-  (ivy-read "Find file: " (yaoni/get-cands)
+  (ivy-read "Find file cur dir: " (yaoni/get-cands)
             :action #'counsel-git-action
             :history 'counsel-git-history
             :caller 'counsel-git))
