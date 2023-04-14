@@ -14,5 +14,5 @@
                               (-
                                (length (dired-current-directory)) 1))))))
     (message "cur-dir=%s" cur-dir)
-    (counsel-git-grep nil cur-dir)))
+    (counsel-git-grep nil cur-dir nil "git grep cur dir: ")))
 (provide 'yaoni-search)
