@@ -30,17 +30,21 @@
 (defun yaoni/get-cands ()
   "Get the candidates for yaoni/search-current-folder-file."
   (interactive)
-  (-filter (apply-partially 'filter-pred (yaoni/get-current-dir))
-           (mapcar (lambda (str) (concat (counsel-locate-git-root) str))
-                   (split-string
-                    (shell-command-to-string counsel-git-cmd)
-                    "\0"
-                    t))))
+  ;; we remove the (counsel-locate-git-root) from the string
+  ;; to make it shorter as some projects will have deeply
+  ;; nested folder structure
+  (mapcar (lambda (str) (string-join (split-string str (counsel-locate-git-root))))
+          (-filter (apply-partially 'filter-pred (yaoni/get-current-dir))
+                   (mapcar (lambda (str) (concat (counsel-locate-git-root) str))
+                           (split-string
+                            (shell-command-to-string counsel-git-cmd)
+                            "\0"
+                            t)))))
 
 (defun yaoni/search-current-folder-file ()
   (interactive)
   (ivy-read "Find file cur dir: " (yaoni/get-cands)
-            :action #'counsel-git-action
+            :action (lambda (file) (find-file (concat (counsel-locate-git-root) file)))
             :history 'counsel-git-history
             :caller 'counsel-git))
 (provide 'yaoni-search)
