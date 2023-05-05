@@ -20,5 +20,17 @@
     (message "now do async push to %s" (magit-get "remote" "origin" "url")))
   (magit-mode-bury-buffer))
 
+(defun display-last-modified-files ()
+  "Display the result of a shell command in a new buffer called *last modified files*."
+  (interactive)
+  ;; Replace "git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" -- {}  | sort | tail -n 5" with your desired shell command
+  (let ((shell-command "git diff --name-only HEAD~1 HEAD")
+        (buffer-name "*last modified files*"))
+
+    (with-current-buffer (get-buffer-create buffer-name)
+      (erase-buffer)
+      (insert (shell-command-to-string shell-command))
+      (display-buffer buffer-name))))
+
 (provide 'yaoni-magit)
 ;;; yaoni-magit.el ends here
