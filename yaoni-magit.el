@@ -25,9 +25,12 @@
   (interactive)
   ;; Replace "git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" -- {}  | sort | tail -n 5" with your desired shell command
   (let ((shell-command "git diff --name-only HEAD~1 HEAD")
-        (buffer-name "*last modified files*"))
-
+        (buffer-name "*last modified files*")
+        (dd (vc-root-dir)))
     (with-current-buffer (get-buffer-create buffer-name)
+      ;; need to set this for the buffer
+      ;; so that shell command can use the correct dir
+      (setq default-directory dd)
       (erase-buffer)
       (insert (shell-command-to-string shell-command))
       (display-buffer buffer-name))))
