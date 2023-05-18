@@ -12,5 +12,18 @@
     (if (length> s 10000)
         (message "Buffer content too long")
       (kill-new s))))
+
+(defun yaoni/upcase-thing-at-point ()
+  "Upcase thing at point"
+  (interactive)
+  (yaoni/mark-node)
+  (upcase-region (region-beginning) (region-end)))
+
+(defun yaoni/downcase-thing-at-point-region ()
+  "Downcase thing at point."
+  (interactive)
+  (yaoni/mark-node)
+  (downcase-region (region-beginning) (region-end)))
+
 (provide 'yaoni-edit)
 ;;; yaoni-edit.el ends here
