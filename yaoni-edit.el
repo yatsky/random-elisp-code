@@ -10,7 +10,9 @@
   (interactive)
   (let ((s (buffer-string)))
     (if (length> s 10000)
-        (message "Buffer content too long")
+        (if (y-or-n-p "Buffer content too long. Proceed? (y/n)")
+            (kill-new s)
+          (message "Operation canclled."))
       (kill-new s))))
 
 (defun yaoni/upcase-thing-at-point ()
