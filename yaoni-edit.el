@@ -21,7 +21,7 @@
   (yaoni/mark-node)
   (upcase-region (region-beginning) (region-end)))
 
-(defun yaoni/downcase-thing-at-point-region ()
+(defun yaoni/downcase-thing-at-point ()
   "Downcase thing at point."
   (interactive)
   (yaoni/mark-node)
