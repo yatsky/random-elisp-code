@@ -27,5 +27,15 @@
   (yaoni/mark-node)
   (downcase-region (region-beginning) (region-end)))
 
+
+(evil-define-operator yaoni/evil-replace-with-kill-ring (beg end type register yank-handler)
+  "Replace current content from BEG to END with content in kill-ring."
+  (interactive "<R><x><y>")
+  ;; somehow no need to call 'evil-delete interactively?
+  (evil-delete beg end type register yank-handler)
+  (insert (cadr kill-ring)))
+
+(define-key evil-normal-state-map "r" 'yaoni/evil-replace-with-kill-ring)
+
 (provide 'yaoni-edit)
 ;;; yaoni-edit.el ends here
