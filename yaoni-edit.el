@@ -37,5 +37,18 @@
 
 (define-key evil-normal-state-map "r" 'yaoni/evil-replace-with-kill-ring)
 
+(defun yaoni/number-items (start end)
+  "Number the lines in the region from START to END."
+  (interactive "r")
+  (let ((line-number 0)
+        (end end)
+        (offset 3))
+    (goto-char start)
+    (while (< (point) end)
+      (setq line-number (1+ line-number))
+      (insert (format "%d. " line-number))
+      (setq end (+ end offset))
+      (forward-line 1))))
+
 (provide 'yaoni-edit)
 ;;; yaoni-edit.el ends here
