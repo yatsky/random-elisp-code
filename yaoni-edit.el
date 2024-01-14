@@ -15,6 +15,12 @@
           (message "Operation canclled."))
       (kill-new s))))
 
+(defun yaoni/copy-minibuffer ()
+  "Copy the minibuffer content with live candidates."
+  (interactive)
+  (mark-whole-buffer)
+  (kill-ring-save))
+
 (defun yaoni/upcase-thing-at-point ()
   "Upcase thing at point"
   (interactive)
@@ -36,6 +42,16 @@
   (insert (cadr kill-ring)))
 
 (define-key evil-normal-state-map "r" 'yaoni/evil-replace-with-kill-ring)
+
+(defun yaoni/indent-toggle-fold ()
+  "Toggle fold all lines larger than indentation on current line"
+  (interactive)
+  (let ((col 1))
+    (save-excursion
+      (back-to-indentation)
+      (setq col (+ 1 (current-column)))
+      (set-selective-display
+       (if selective-display nil (or col 1))))))
 
 (provide 'yaoni-edit)
 ;;; yaoni-edit.el ends here
