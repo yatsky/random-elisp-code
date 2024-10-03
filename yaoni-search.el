@@ -21,7 +21,9 @@
   (interactive)
   (let ((cur-dir (yaoni/get-current-dir)))
     (message "cur-dir=%s" cur-dir)
-    (counsel-git-grep nil cur-dir nil "git grep cur dir: ")))
+	(if (vc-backend (buffer-file-name))
+		(counsel-git-grep nil cur-dir nil "git grep cur dir: ")
+	  (counsel-rg nil cur-dir nil "grep cur dir:"))))
 
 
 (defun filter-pred (prefix str)
