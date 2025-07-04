@@ -43,10 +43,21 @@
                             "\0"
                             t)))))
 
+(defun yaoni/get-current-buffer-folder ()
+  "Return the folder name of the current buffer."
+  (let ((dir (or (if (eq major-mode 'dired-mode)
+                     (dired-current-directory)
+                   (if (vc-backend (buffer-file-name))
+					   (counsel-locate-git-root)
+					 (or buffer-file-name default-directory)))
+                 default-directory)))
+    (message dir)
+    dir))
+
 (defun yaoni/search-current-folder-file ()
   (interactive)
   (ivy-read "Find file cur dir: " (yaoni/get-cands)
-            :action (lambda (file) (find-file (concat (counsel-locate-git-root) file)))
+            :action (lambda (file) (find-file (concat (yaoni/get-current-buffer-folder) file)))
             :history 'counsel-git-history
             :caller 'counsel-git))
 (provide 'yaoni-search)
